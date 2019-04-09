@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.memories.mapper.UserMapper">
+ 
+  <select id="getUserById" parameterType="java.lang.Long" resultType="com.memories.entity.User">
+		SELECT * FROM user WHERE userId = #{userId}
+  </select>
+  
+  <select id="getUserByName" parameterType="java.lang.String" resultType="com.memories.entity.User">
+  		select username,password from user where username like '%${value}%'
+  </select>
+
+	<insert id="addUser" parameterType="com.memories.entity.User">
+		insert into user(username, password, email) 
+			values(#{username},#{password},#{email})
+	</insert>
+
+</mapper>
